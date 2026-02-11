@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love ♥</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rose: #d4526e;
+            --deep-rose: #a83551;
+            --blush: #f5e8e8;
+            --cream: #fef9f6;
+            --gold: #d4af37;
+            --charcoal: #2c2c2c;
+            --shadow: rgba(212, 82, 110, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--blush) 100%);
+            color: var(--charcoal);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Floating hearts background */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: var(--rose);
+            opacity: 0.1;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.1;
+            }
+            90% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            color: var(--deep-rose);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--charcoal);
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* Main gift reveal */
+        .gift-container {
+            background: white;
+            border-radius: 30px;
+            padding: 60px 40px;
+            box-shadow: 0 20px 60px var(--shadow);
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out 0.3s backwards;
+        }
+
+        .gift-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--rose), var(--gold), var(--rose));
+        }
+
+        .gift-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .gift-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--rose);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .gift-header p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Grid of love reasons */
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .reason-card {
+            background: var(--blush);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            position: relative;
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .reason-card:nth-child(1) { animation-delay: 0.5s; }
+        .reason-card:nth-child(2) { animation-delay: 0.6s; }
+        .reason-card:nth-child(3) { animation-delay: 0.7s; }
+        .reason-card:nth-child(4) { animation-delay: 0.8s; }
+        .reason-card:nth-child(5) { animation-delay: 0.9s; }
+        .reason-card:nth-child(6) { animation-delay: 1s; }
+
+        .reason-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px var(--shadow);
+            background: white;
+        }
+
+        .reason-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .reason-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--deep-rose);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .reason-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--charcoal);
+        }
+
+        /* Love letter section */
+        .love-letter {
+            background: linear-gradient(135deg, white 0%, var(--blush) 100%);
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 20px 60px var(--shadow);
+            margin: 50px 0;
+            position: relative;
+            animation: fadeInUp 1s ease-out 1.2s backwards;
+        }
+
+        .love-letter::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 8rem;
+            color: var(--rose);
+            opacity: 0.1;
+        }
+
+        .love-letter h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: var(--deep-rose);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .letter-content {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: var(--charcoal);
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        .signature {
+            text-align: right;
+            margin-top: 40px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--rose);
+            font-style: italic;
+        }
+
+        /* Proposal Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            position: relative;
+            background: linear-gradient(135deg, white 0%, var(--blush) 100%);
+            margin: 10% auto;
+            padding: 60px 40px;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 30px;
+            box-shadow: 0 30px 80px rgba(212, 82, 110, 0.4);
+            text-align: center;
+            animation: slideInDown 0.5s ease;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2rem;
+            color: var(--rose);
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .close-button:hover {
+            background: var(--blush);
+            transform: rotate(90deg);
+        }
+
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-content::before {
+            content: '💍';
+            font-size: 5rem;
+            display: block;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .proposal-question {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--deep-rose);
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .proposal-button {
+            padding: 18px 50px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .yes-button {
+            background: linear-gradient(135deg, var(--rose), var(--deep-rose));
+            color: white;
+        }
+
+        .yes-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px var(--shadow);
+        }
+
+        .no-button {
+            background: white;
+            color: var(--charcoal);
+            border: 2px solid var(--rose);
+            position: relative;
+        }
+
+        .success-message {
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeInScale 0.5s ease;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .success-content {
+            padding: 20px;
+        }
+
+        .success-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--deep-rose);
+            margin-bottom: 20px;
+        }
+
+        .success-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+            margin-bottom: 15px;
+        }
+
+        .hearts-explosion {
+            font-size: 3rem;
+            margin: 30px 0;
+            animation: heartPulse 1s infinite;
+        }
+
+        @keyframes heartPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        /* CTA Button */
+        .cta-section {
+            text-align: center;
+            margin: 60px 0;
+            animation: fadeInUp 1s ease-out 1.6s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--rose), var(--deep-rose));
+            color: white;
+            padding: 20px 60px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: all 0.4s ease;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px var(--shadow);
+            background: linear-gradient(135deg, var(--deep-rose), var(--rose));
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--charcoal);
+            opacity: 0.7;
+            animation: fadeIn 1s ease-out 1.8s backwards;
+        }
+
+        footer p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 0.7;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .gift-header h2 {
+                font-size: 2rem;
+            }
+            
+            .love-letter {
+                padding: 30px 20px;
+            }
+            
+            .letter-content {
+                font-size: 1rem;
+            }
+            
+            .gift-container {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-bg" id="heartsContainer"></div>
+    
+    <div class="container">
+        <header>
+            <h1>Happy Valentine's Day</h1>
+            <p class="subtitle">To My Beautiful Wife</p>
+        </header>
+
+        <div class="gift-container">
+            <div class="gift-header">
+                <h2>You Are My Everything</h2>
+                <p>Every day with you is a gift. This Valentine's Day, I want to remind you of all the reasons why you make my world complete. You are the love of my life, my best friend, and my forever.</p>
+            </div>
+
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <div class="reason-icon">💖</div>
+                    <h3>Your Smile</h3>
+                    <p>Your smile lights up every room and warms my heart in ways I never thought possible.</p>
+                </div>
+
+                <div class="reason-card">
+                    <div class="reason-icon">✨</div>
+                    <h3>Your Kindness</h3>
+                    <p>The way you care for others and show compassion inspires me to be a better person every day.</p>
+                </div>
+
+                <div class="reason-card">
+                    <div class="reason-icon">🌟</div>
+                    <h3>Your Strength</h3>
+                    <p>Your courage and resilience through life's challenges amazes me and makes me proud to call you mine.</p>
+                </div>
+
+                <div class="reason-card">
+                    <div class="reason-icon">💫</div>
+                    <h3>Your Love</h3>
+                    <p>The unconditional love you give makes every moment we share feel like magic.</p>
+                </div>
+
+                <div class="reason-card">
+                    <div class="reason-icon">🌺</div>
+                    <h3>Your Beauty</h3>
+                    <p>Inside and out, you are the most beautiful person I've ever known. You take my breath away.</p>
+                </div>
+
+                <div class="reason-card">
+                    <div class="reason-icon">🎵</div>
+                    <h3>Your Laughter</h3>
+                    <p>Your laugh is my favorite sound in the world. It brings joy to even the darkest days.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="love-letter">
+            <h3>A Letter From My Heart</h3>
+            <div class="letter-content">
+                <p>My Dearest Love,</p>
+                <p>Words cannot fully express how much you mean to me. From the moment we met, you changed my life in the most beautiful way. Every morning I wake up grateful for another day by your side.</p>
+                <p>You are my partner in everything—my adventures, my dreams, my quiet moments of peace. You make the ordinary extraordinary and the difficult bearable. Your support, your warmth, and your unwavering belief in us has made our life together a beautiful journey.</p>
+                <p>This Valentine's Day, I want you to know that my love for you grows deeper with each passing day. You are not just my wife—you are my heart, my home, and my happily ever after.</p>
+                <p>I love you more than words could ever say.</p>
+                <div class="signature">Forever Yours ♥</div>
+            </div>
+        </div>
+
+
+
+        <div class="cta-section">
+            <a href="#" class="cta-button" onclick="openProposal(); return false;">Click for Your Special Surprise</a>
+        </div>
+    </div>
+
+    <!-- Proposal Modal -->
+    <div id="proposalModal" class="modal">
+        <div class="modal-content">
+            <button class="close-button" onclick="closeProposal()">&times;</button>
+            <div id="proposalQuestion" class="proposal-content">
+                <h2 class="proposal-question">Will You Marry Me?</h2>
+                <div class="button-container">
+                    <button class="proposal-button yes-button" onclick="sayYes()">Yes! 💕</button>
+                    <button class="proposal-button no-button" id="noButton" onmouseover="moveButton()" onclick="moveButton()">No</button>
+                </div>
+            </div>
+            
+            <div id="successMessage" class="success-message">
+                <div class="success-content">
+                    <h2>You've Made Me The Happiest! 💖</h2>
+                    <div class="hearts-explosion">❤️ 💕 💖 💗 💓 💝</div>
+                    <p>I can't wait to spend forever with you, my love!</p>
+                    <p>You are my dream come true, my soulmate, and my everything. Today marks the beginning of our beautiful journey together as husband and wife.</p>
+                    <p>I promise to love you, cherish you, and make you smile every single day for the rest of our lives.</p>
+                    <p style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--rose); margin-top: 30px; font-style: italic;">Forever and Always, My Love ♥</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>With all my love, today and always ♥</p>
+    </footer>
+
+    <script>
+        // Create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '♥';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            
+            document.getElementById('heartsContainer').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 20000);
+        }
+
+        // Create multiple hearts
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createHeart, i * 1000);
+        }
+        
+        setInterval(() => {
+            createHeart();
+        }, 2000);
+
+        // Proposal Modal Functions
+        function openProposal() {
+            // Reset modal to show proposal question
+            document.getElementById('proposalQuestion').style.display = 'block';
+            document.getElementById('successMessage').classList.remove('show');
+            
+            // Reset no button position
+            const noButton = document.getElementById('noButton');
+            noButton.style.position = 'relative';
+            noButton.style.left = '0';
+            noButton.style.top = '0';
+            
+            // Show modal
+            document.getElementById('proposalModal').style.display = 'block';
+        }
+
+        function closeProposal() {
+            document.getElementById('proposalModal').style.display = 'none';
+        }
+
+        function sayYes() {
+            document.getElementById('proposalQuestion').style.display = 'none';
+            document.getElementById('successMessage').classList.add('show');
+            
+            // Create celebration hearts
+            for (let i = 0; i < 30; i++) {
+                setTimeout(createHeart, i * 100);
+            }
+        }
+
+        function moveButton() {
+            const noButton = document.getElementById('noButton');
+            const modal = document.querySelector('.modal-content');
+            
+            // Get modal dimensions
+            const modalRect = modal.getBoundingClientRect();
+            const buttonRect = noButton.getBoundingClientRect();
+            
+            // Calculate max positions (keeping button inside modal)
+            const maxX = modalRect.width - buttonRect.width - 80;
+            const maxY = modalRect.height - buttonRect.height - 80;
+            
+            // Generate random position
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            // Apply position
+            noButton.style.position = 'absolute';
+            noButton.style.left = randomX + 'px';
+            noButton.style.top = randomY + 'px';
+            
+            return false;
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('proposalModal');
+            if (event.target == modal) {
+                closeProposal();
+            }
+        }
+    </script>
+</body>
+</html>
