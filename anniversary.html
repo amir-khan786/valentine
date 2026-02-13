@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary, My Love</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #d4a373;
+            --secondary: #e8c4a3;
+            --accent: #b8896b;
+            --text: #3a3230;
+            --soft-white: #faf8f6;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background: linear-gradient(135deg, #faf8f6 0%, #f5ede5 50%, #faf8f6 100%);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating hearts animation */
+        .heart {
+            position: absolute;
+            color: var(--primary);
+            font-size: 20px;
+            opacity: 0.3;
+            animation: float 15s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .heart:nth-child(2) { left: 25%; animation-delay: 3s; font-size: 16px; }
+        .heart:nth-child(3) { left: 40%; animation-delay: 6s; font-size: 24px; }
+        .heart:nth-child(4) { left: 55%; animation-delay: 2s; }
+        .heart:nth-child(5) { left: 70%; animation-delay: 5s; font-size: 18px; }
+        .heart:nth-child(6) { left: 85%; animation-delay: 8s; }
+        .heart:nth-child(7) { left: 15%; animation-delay: 10s; font-size: 22px; }
+        .heart:nth-child(8) { left: 90%; animation-delay: 12s; }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 80px;
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 300;
+            color: var(--accent);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: var(--primary);
+            font-weight: 400;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeIn 2s ease-out 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .ornament {
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            margin: 30px auto;
+            position: relative;
+        }
+
+        .ornament::before,
+        .ornament::after {
+            content: '♥';
+            position: absolute;
+            top: -10px;
+            color: var(--primary);
+            font-size: 14px;
+        }
+
+        .ornament::before {
+            left: -10px;
+        }
+
+        .ornament::after {
+            right: -10px;
+        }
+
+        .content-section {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 60px 50px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 40px rgba(212, 163, 115, 0.15);
+            border: 1px solid rgba(212, 163, 115, 0.2);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 1s ease-out 1s forwards;
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-section:nth-child(3) {
+            animation-delay: 1.3s;
+        }
+
+        .message {
+            font-size: clamp(1.1rem, 2vw, 1.25rem);
+            line-height: 2;
+            color: var(--text);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .message-intro {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: 500;
+            position: relative;
+            display: inline-block;
+        }
+
+        .love-note {
+            text-align: center;
+            padding: 50px 30px;
+            background: linear-gradient(135deg, rgba(212, 163, 115, 0.15), rgba(232, 196, 163, 0.15));
+            border-radius: 20px;
+            border: 2px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .love-note::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 100px;
+            color: var(--primary);
+            opacity: 0.2;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .love-note::after {
+            content: '"';
+            position: absolute;
+            bottom: -30px;
+            right: 20px;
+            font-size: 100px;
+            color: var(--primary);
+            opacity: 0.2;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .love-note p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-style: italic;
+            color: var(--accent);
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .signature {
+            margin-top: 40px;
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-style: italic;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out 2s forwards;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px 40px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out 2.5s forwards;
+        }
+
+        .date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--primary);
+            letter-spacing: 2px;
+        }
+
+        /* Sparkle effect */
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkle 2s infinite;
+        }
+
+        .sparkle:nth-child(odd) {
+            animation-delay: 1s;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            .content-section {
+                padding: 40px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating hearts -->
+    <div class="heart">♥</div>
+    <div class="heart">♥</div>
+    <div class="heart">♥</div>
+    <div class="heart">♥</div>
+    <div class="heart">♥</div>
+    <div class="heart">♥</div>
+    <div class="heart">♥</div>
+    <div class="heart">♥</div>
+
+    <div class="container">
+        <header>
+            <h1>Happy Anniversary</h1>
+            <div class="ornament"></div>
+            <p class="subtitle">💑 To My Forever Love 💑</p>
+        </header>
+
+        <section class="content-section">
+            <p class="message-intro">My Dearest Love,</p>
+            <p class="message">
+                Every moment with you feels like a <span class="highlight">beautiful dream</span> I never want to wake up from. 💏
+                You've filled my life with more <span class="highlight">joy, laughter, and love</span> than I ever thought possible. 🥰
+            </p>
+            <p class="message">
+                Today we celebrate another year of <span class="highlight">our journey together</span> 🫶, and I'm so grateful 
+                for every single memory we've created. You are my best friend, my partner, and my <span class="highlight">greatest adventure</span>. 💞
+            </p>
+        </section>
+
+        <section class="content-section love-note">
+            <p>
+                Here's to forever with you 👫, to countless more anniversaries 💏, 
+                and to a love that grows stronger with each passing day. 🤗
+                I choose you today and always. 💑💕
+            </p>
+        </section>
+
+        <div class="signature">
+            Forever Yours ♡
+        </div>
+
+        <footer>
+            <p class="date">Our Anniversary · 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add subtle sparkle effects
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => sparkle.remove(), 2000);
+        }
+
+        // Create sparkles periodically
+        setInterval(createSparkle, 1000);
+
+        // Add hover effect to highlight text
+        document.querySelectorAll('.highlight').forEach(el => {
+            el.addEventListener('mouseenter', function() {
+                this.style.transition = 'all 0.3s ease';
+                this.style.transform = 'scale(1.05)';
+            });
+            el.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
